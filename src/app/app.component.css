@@ -1,0 +1,65 @@
+/* app.component.css */
+
+.ts {
+    font-size: x-large;
+  }
+  
+  .ft {
+    font-family: Cursive;
+    font-size: 45px;
+  }
+  
+  .brand {
+    width: 15%;
+  }
+  
+  .stacked-text {
+    position: relative;
+  }
+  
+  .stacked-text::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+    width: 100%;
+    font-size: 50px;
+    font-weight: bold;
+    background: linear-gradient(to bottom, #cc2b5e, #753a88);
+    background-clip: text;
+    color: transparent;
+    transform: translateY(-10px);
+  }
+  
+  .stacked-text span:first-child {
+    color: #cc2b5e;
+  }
+  
+  .stacked-text span:last-child {
+    color: #753a88;
+  }
+  
+  .text-center {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 20px;
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .text-center::after {
+    content: "";
+    display: block;
+    width: 30px;
+    height: 2px;
+    background-color: #cc2b5e;
+    margin: 10px auto;
+    transition: width 0.3s ease-in-out;
+  }
+  
+  .text-center:hover::after {
+    width: 50px;
+  }
+  
