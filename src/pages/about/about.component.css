@@ -36,7 +36,6 @@ html {
 
   .text-lg {
     color: #470829;
-    /* padding: 0 1em; */
     line-height: 1.6;
   }
 
@@ -53,7 +52,6 @@ html {
 
   .btn:hover {
     background-color: #A17062;
-    /* transform: scale(1.05); */
   }
 
   .ft {
