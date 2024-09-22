@@ -2,14 +2,12 @@ import { Routes } from '@angular/router';
 import { AboutComponent } from '../pages/about/about.component';
 import { LibraryComponent } from '../pages/library/library.component';
 import { ContactUsComponent } from '../pages/contact-us/contact-us.component';
-import { TestComponent } from '../pages/test/test.component';
-// import { HomeComponent } from '../pages/home/home.component';
-// import { NavbarComponent } from '../designs/navbar/navbar.component';
+import { HomeComponent } from '../pages/home/home.component';
 
 export const routes: Routes = [
     {
         path: '',
-        component: TestComponent
+        component: HomeComponent
     },
     {
         path: 'library',
@@ -22,6 +20,5 @@ export const routes: Routes = [
     {
         path: 'contact',
         component: ContactUsComponent
-    },
-    
+    },    
 ];
