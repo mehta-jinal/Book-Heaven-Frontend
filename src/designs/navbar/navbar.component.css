@@ -1,7 +1,28 @@
-.logo{
+.logo {
     width: 8%;
 }
-    .header {
-        position: sticky;
-        top: 0;
-      }
+
+.header {
+    position: sticky;
+    top: 0;
+}
+
+/* Optional: Adjust avatar spacing or dropdown appearance */
+.avatar img {
+    border-radius: 50%;
+}
+
+.dropdown-content li a:hover {
+    background-color: #e2e8f0;
+    /* Adjust hover background */
+}
+
+/* Show the dropdown when 'dropdown-open' is applied */
+.dropdown.dropdown-open .dropdown-content {
+    display: block;
+}
+
+/* Hide the dropdown by default */
+.dropdown .dropdown-content {
+    display: none;
+}
