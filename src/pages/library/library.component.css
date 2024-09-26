@@ -273,12 +273,12 @@ body {
 .container .card .contentBx a {
     display: inline-block;
     padding: 10px 20px;
-    background: #fff;
+    background: #A17062;
     border-radius: 4px;
     margin-top: 10px;
     text-decoration: none;
     font-weight: 600;
-    color: #111;
+    color: #470829;
     opacity: 0;
     transform: translateY(50px);
     transition: .5s;
