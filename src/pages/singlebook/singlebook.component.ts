@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './singlebook.component.css'
 })
 export class SinglebookComponent {
-  
+
 }
