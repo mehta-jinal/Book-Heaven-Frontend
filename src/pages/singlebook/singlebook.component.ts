@@ -2,10 +2,11 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-singlebook',
   standalone: true,
-  imports: [HttpClientModule, CommonModule, RouterLink],
+  imports: [HttpClientModule, CommonModule, RouterLink, FormsModule],
   templateUrl: './singlebook.component.html',
   styleUrls: ['./singlebook.component.css']
 })
