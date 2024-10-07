@@ -1,8 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+// import { constructor } from 'jasmine'
+import { CommonapiService } from '../../services/commonapi.service';
+
 @Component({
   selector: 'app-singlebook',
   standalone: true,
@@ -11,11 +14,12 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./singlebook.component.css']
 })
 export class SinglebookComponent implements OnInit {
+
   public book: any;  // Store a single book
   private bookId: string | null = null;
-register: any;
+  register: any;
 
-  constructor(private http: HttpClient, private route: ActivatedRoute) { }
+  constructor(private http: HttpClient, private route: ActivatedRoute , private router1: Router) { }
 
   ngOnInit(): void {
     // Fetch book ID from route parameters
@@ -28,7 +32,7 @@ register: any;
     });
   }
 
-  // Fetch a single book by its ID
+   // Fetch a single book by its ID
   fetchBook(bookId: string): void {
     this.http.get(`http://localhost:1003/books/${bookId}`)
       .subscribe((resp: any) => {
@@ -37,4 +41,28 @@ register: any;
         console.error('Error fetching book:', error);
       });
   }
+  
+  // Method to handle download button click
+  onDownloadClick(){
+    const token = localStorage.getItem('jwtToken'); // Check if JWT token exists in localStorage or sessionStorage
+    
+    if (token) {
+      // If JWT token exists, redirect to download page
+      window.location.href = '/download'; // Or the actual download URL
+    }
+    else {
+      // If no token, redirect to login page
+      // SinglebookComponent.router1.navigate(['/login']);
+      window.location.href = '/register';
+      // SinglebookComponent.arguments.router1.navigate(['/register']);
+    }
+  }
+  
+  
 }
+  
+  
+  function onDownloadClick() {
+  throw new Error('Function not implemented.');
+}
+
