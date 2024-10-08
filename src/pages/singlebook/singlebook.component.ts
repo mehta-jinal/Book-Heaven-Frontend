@@ -19,7 +19,7 @@ export class SinglebookComponent implements OnInit {
   private bookId: string | null = null;
   register: any;
 
-  constructor(private http: HttpClient, private route: ActivatedRoute , private router1: Router) { }
+  constructor(private http: HttpClient, private route: ActivatedRoute, private router1: Router) { }
 
   ngOnInit(): void {
     // Fetch book ID from route parameters
@@ -32,7 +32,7 @@ export class SinglebookComponent implements OnInit {
     });
   }
 
-   // Fetch a single book by its ID
+  // Fetch a single book by its ID
   fetchBook(bookId: string): void {
     this.http.get(`http://localhost:1003/books/${bookId}`)
       .subscribe((resp: any) => {
@@ -41,11 +41,11 @@ export class SinglebookComponent implements OnInit {
         console.error('Error fetching book:', error);
       });
   }
-  
+
   // Method to handle download button click
-  onDownloadClick(){
+  onDownloadClick() {
     const token = localStorage.getItem('jwtToken'); // Check if JWT token exists in localStorage or sessionStorage
-    
+
     if (token) {
       // If JWT token exists, redirect to download page
       window.location.href = '/download'; // Or the actual download URL
@@ -57,12 +57,10 @@ export class SinglebookComponent implements OnInit {
       // SinglebookComponent.arguments.router1.navigate(['/register']);
     }
   }
-  
-  
 }
-  
-  
-  function onDownloadClick() {
+function onDownloadClick() {
   throw new Error('Function not implemented.');
 }
+
+
 
