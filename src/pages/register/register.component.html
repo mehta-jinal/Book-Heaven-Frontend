@@ -1,35 +1,96 @@
-<div class="container">
-	<div class="screen">
-		<div class="screen__content">
-			<form class="login">
-				<div class="login__field">
-					<i class="login__icon fas fa-user"></i>
-					<input type="text" class="login__input" placeholder="User name / Email">
-				</div>
-				<div class="login__field">
-					<i class="login__icon fas fa-lock"></i>
-					<input type="password" class="login__input" placeholder="Password">
-				</div>
-				<button class="button login__submit">
-					<span class="button__text">Log In Now</span>
-					<i class="button__icon fas fa-chevron-right"></i>
-				</button>				
-			</form>
-			<div class="social-login">
-				<h3>log in via</h3>
-				<div class="social-icons">
-					<a href="#" class="social-login__icon fab fa-instagram"></a>
-					<a href="#" class="social-login__icon fab fa-facebook"></a>
-					<a href="#" class="social-login__icon fab fa-twitter"></a>
-				</div>
-			</div>
+<!-- Set the data-theme attribute to light -->
+<div class="flex justify-center mt-8" data-theme="light">
+	<label for="auth-modal" class="btn btn-primary">Open Authentication Modal</label>
+</div>
+
+<!-- Modal for Register and Login -->
+<input type="checkbox" id="auth-modal" class="modal-toggle" />
+<div class="modal" data-theme="light">
+	<div class="modal-box max-w-lg">
+		<div class="tabs tabs-boxed mb-4 flex justify-center">
+			<a id="login-tab" class="tab tab-active cursor-pointer">Login</a>
+			<a id="register-tab" class="tab cursor-pointer">Register</a>
 		</div>
-		<div class="screen__background">
-			<span class="screen__background__shape screen__background__shape4"></span>
-			<span class="screen__background__shape screen__background__shape3"></span>		
-			<span class="screen__background__shape screen__background__shape2"></span>
-			<span class="screen__background__shape screen__background__shape1"></span>
-		</div>		
+
+		<!-- Login Form -->
+		<div id="login-form" class="space-y-4">
+			<h2 class="text-xl font-semibold text-center">Sign in to your account</h2>
+			<form class="space-y-4" action="#" method="POST">
+				<div class="form-control">
+					<label class="label">
+						<span class="label-text">Email</span>
+					</label>
+					<input type="email" placeholder="Enter your email" class="input input-bordered w-full" required />
+				</div>
+				<div class="form-control">
+					<label class="label">
+						<span class="label-text">Password</span>
+					</label>
+					<input type="password" placeholder="Enter your password" class="input input-bordered w-full"
+						required />
+				</div>
+				<div class="form-control">
+					<label class="cursor-pointer label justify-between">
+						<span class="label-text">Remember me</span>
+						<input type="checkbox" class="checkbox" />
+					</label>
+				</div>
+				<button type="submit" class="btn btn-primary w-full">Sign In</button>
+			</form>
+		</div>
+
+		<!-- Register Form (Initially hidden) -->
+		<div id="register-form" class="hidden space-y-4">
+			<h2 class="text-xl font-semibold text-center">Create your account</h2>
+			<form class="space-y-4" action="#" method="POST">
+				<div class="form-control">
+					<label class="label">
+						<span class="label-text">Username</span>
+					</label>
+					<input type="text" placeholder="Enter your username" class="input input-bordered w-full" required />
+				</div>
+				<div class="form-control">
+					<label class="label">
+						<span class="label-text">Email</span>
+					</label>
+					<input type="email" placeholder="Enter your email" class="input input-bordered w-full" required />
+				</div>
+				<div class="form-control">
+					<label class="label">
+						<span class="label-text">Password</span>
+					</label>
+					<input type="password" placeholder="Enter your password" class="input input-bordered w-full"
+						required />
+				</div>
+				<button type="submit" class="btn btn-primary w-full">Register</button>
+			</form>
+		</div>
+
+		<!-- Close Modal Button -->
+		<div class="modal-action">
+			<label for="auth-modal" class="btn">Close</label>
+		</div>
 	</div>
 </div>
-  
+
+<!-- Script to toggle between Login and Register forms -->
+<script>
+	const loginTab = document.getElementById('login-tab');
+	const registerTab = document.getElementById('register-tab');
+	const loginForm = document.getElementById('login-form');
+	const registerForm = document.getElementById('register-form');
+
+	loginTab.addEventListener('click', () => {
+		loginForm.classList.remove('hidden');
+		registerForm.classList.add('hidden');
+		loginTab.classList.add('tab-active');
+		registerTab.classList.remove('tab-active');
+	});
+
+	registerTab.addEventListener('click', () => {
+		loginForm.classList.add('hidden');
+		registerForm.classList.remove('hidden');
+		loginTab.classList.remove('tab-active');
+		registerTab.classList.add('tab-active');
+	});
+</script>

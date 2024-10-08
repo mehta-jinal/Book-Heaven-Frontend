@@ -1,9 +1,10 @@
-<div class="container py-5">
+<div class="container py-5 ">
   <div class="row g-5">
     <!-- Product Image Section -->
     <div class="col-lg-6">
       <div class="image-container" style="width: 100%; height: 100%; max-height: 600px; overflow: hidden;">
-        <img [src]="book.image" class="img-fluid w-100 h-100" alt="Product Image" style="object-fit: cover; width: 100%; height: 100%;" />
+        <img [src]="book.image" class="img-fluid w-100 h-100" alt="Product Image"
+          style="object-fit: cover; width: 100%; height: 100%;" />
       </div>
     </div>
 
@@ -13,10 +14,99 @@
       <p class="ts1 fst-italic mt-2">-{{book.author}}</p>
       <p class="ts1 mt-4">{{book.description}}</p>
       <p class="mt-2">Published on: {{book.pub_date}}</p>
-      <button  (submit)="onDownloadClick()">Download</button>
-
-      <a (click)="onDownloadClick()" class="btn glass mt-3">Download</a>
-      <!-- <a href="register" class="btn glass mt-3" >Download</a> -->
+      <div class="flex justify-center mt-8" data-theme="light">
+        <label for="auth-modal" class="btn btn-primary">Download</label>
+      </div>
+      
+      <!-- <a for="" class="btn glass mt-3">Download</a> -->
     </div>
+    <input type="checkbox" id="auth-modal" class="modal-toggle" />
+<div class="modal" data-theme="light">
+	<div class="modal-box max-w-lg">
+		<div class="tabs tabs-boxed mb-4 flex justify-center">
+			<a id="login-tab" class="tab tab-active cursor-pointer">Login</a>
+			<a id="register-tab" class="tab cursor-pointer">Register</a>
+		</div>
+
+		<!-- Login Form -->
+		<div id="login-form" class="space-y-4">
+			<h2 class="text-xl font-semibold text-center">Sign in to your account</h2>
+			<form class="space-y-4" action="#" method="POST">
+				<div class="form-control">
+					<label class="label">
+						<span class="label-text">Email</span>
+					</label>
+					<input type="email" placeholder="Enter your email" class="input input-bordered w-full" required />
+				</div>
+				<div class="form-control">
+					<label class="label">
+						<span class="label-text">Password</span>
+					</label>
+					<input type="password" placeholder="Enter your password" class="input input-bordered w-full"
+						required />
+				</div>
+				<div class="form-control">
+					<label class="cursor-pointer label justify-between">
+						<span class="label-text">Remember me</span>
+						<input type="checkbox" class="checkbox" />
+					</label>
+				</div>
+				<button type="submit" class="btn btn-primary w-full">Sign In</button>
+			</form>
+		</div>
+
+		<!-- Register Form (Initially hidden) -->
+		<div id="register-form" class="hidden space-y-4">
+			<h2 class="text-xl font-semibold text-center">Create your account</h2>
+			<form class="space-y-4" action="#" method="POST">
+				<div class="form-control">
+					<label class="label">
+						<span class="label-text">Username</span>
+					</label>
+					<input type="text" placeholder="Enter your username" class="input input-bordered w-full" required />
+				</div>
+				<div class="form-control">
+					<label class="label">
+						<span class="label-text">Email</span>
+					</label>
+					<input type="email" placeholder="Enter your email" class="input input-bordered w-full" required />
+				</div>
+				<div class="form-control">
+					<label class="label">
+						<span class="label-text">Password</span>
+					</label>
+					<input type="password" placeholder="Enter your password" class="input input-bordered w-full"
+						required />
+				</div>
+				<button type="submit" class="btn btn-primary w-full">Register</button>
+			</form>
+		</div>
+
+		<!-- Close Modal Button -->
+		<div class="modal-action">
+			<label for="auth-modal" class="btn">Close</label>
+		</div>
+	</div>
+</div>
+<script>
+	const loginTab = document.getElementById('login-tab');
+	const registerTab = document.getElementById('register-tab');
+	const loginForm = document.getElementById('login-form');
+	const registerForm = document.getElementById('register-form');
+
+	loginTab.addEventListener('click', () => {
+		loginForm.classList.remove('hidden');
+		registerForm.classList.add('hidden');
+		loginTab.classList.add('tab-active');
+		registerTab.classList.remove('tab-active');
+	});
+
+	registerTab.addEventListener('click', () => {
+		loginForm.classList.add('hidden');
+		registerForm.classList.remove('hidden');
+		loginTab.classList.remove('tab-active');
+		registerTab.classList.add('tab-active');
+	});
+</script>
   </div>
 </div>
