@@ -4,12 +4,11 @@ import { NavbarComponent } from '../designs/navbar/navbar.component';
 import { HomeComponent } from '../pages/home/home.component';
 import { FooterComponent } from '../designs/footer/footer.component';
 import { ContactUsComponent } from '../pages/contact-us/contact-us.component';
-import { RegisterComponent } from "../pages/register/register.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavbarComponent, HomeComponent, FooterComponent, ContactUsComponent, RegisterComponent],
+  imports: [RouterOutlet, NavbarComponent, HomeComponent, FooterComponent, ContactUsComponent],
   templateUrl:'./app.component.html',
   styleUrl: 'app.component.css'
 })
