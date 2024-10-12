@@ -1,12 +1,14 @@
 .contact-us-container {
     max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ddd;
+    margin: 10px auto;
+    margin-bottom: 10px;
+    padding: 30px;
+    border: 1px solid #470829;
     border-radius: 5px;
   }
   
   h2 {
+    font-size: x-large;
     text-align: center;
     margin-bottom: 20px;
   }
@@ -37,7 +39,7 @@
     display: block;
     width: 100%;
     padding: 10px;
-    background-color: #4caf50;
+    background-color: #470829;
     color: white;
     border: none;
     border-radius: 3px;
@@ -49,6 +51,6 @@
   }
   
   button:hover:not([disabled]) {
-    background-color: #45a049;
+    background-color: #A17062;
   }
   
