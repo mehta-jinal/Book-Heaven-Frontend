@@ -1,4 +1,4 @@
-<div class="container py-5 ">
+<div class="container py-5">
 	<div class="row g-5">
 		<!-- Product Image Section -->
 		<div class="col-lg-6">
@@ -14,102 +14,96 @@
 			<p class="ts1 fst-italic mt-2">-{{book.author}}</p>
 			<p class="ts1 mt-4">{{book.description}}</p>
 			<p class="mt-2">Published on: {{book.pub_date}}</p>
+			<!-- <div class="flex mt-8" data-theme="light">
+				<label for="auth-modal" class="btn glass btn-primary">Download</label>
+			</div> -->
+			<!-- </div> -->
+
+			<!-- Button trigger modal -->
 			<div class="flex mt-8" data-theme="light">
 				<label for="auth-modal" class="btn glass btn-primary">Download</label>
 			</div>
 
-			<!-- <a for="" class="btn glass mt-3">Download</a> -->
-		</div>
-		<input type="checkbox" id="auth-modal" class="modal-toggle" />
-		<div class="modal" data-theme="light">
-			<div class="modal-box max-w-lg">
-				<div class="tabs tabs-boxed mb-4 flex justify-center">
-					<a id="login-tab" class="tab tab-active cursor-pointer">Login</a>
-					<a id="register-tab" class="tab cursor-pointer">Register</a>
-				</div>
+			<!-- Modal Structure -->
+			<input type="checkbox" id="auth-modal" class="modal-toggle" />
+			<div class="modal">
+				<div class="modal-box relative">
+					<label for="auth-modal" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
 
-				<!-- Login Form -->
-				<div id="login-form" class="space-y-4">
-					<h2 class="text-xl font-semibold text-center">Sign in to your account</h2>
-					<form class="space-y-4" action="#" method="POST">
-						<div class="form-control">
-							<label class="label">
-								<span class="label-text1">Email</span>
-							</label>
-							<input type="email" placeholder="Enter your email" class="input input-bordered w-full"
-								required />
-						</div>
-						<div class="form-control">
-							<label class="label">
-								<span class="label-text1">Password</span>
-							</label>
-							<input type="password" placeholder="Enter your password" class="input input-bordered w-full"
-								required />
-						</div>
-						<div class="form-control">
-							<label class="cursor-pointer label justify-between">
-								<span class="label-text">Remember me</span>
-								<input type="checkbox" class="checkbox" />
-							</label>
-						</div>
-						<button type="submit" class="btn1 glass w-full">Sign In</button>
-					</form>
-				</div>
+					<!-- Login Form (default view) -->
+					<div id="login-form">
+						<h3 class="font-bold text-lg">Login</h3>
+						<form>
+							<div class="form-control">
+								<label class="label" for="login-email">
+									<span class="label-text">Email</span>
+								</label>
+								<input type="email" id="login-email" class="input input-bordered" required />
+							</div>
+							<div class="form-control">
+								<label class="label" for="login-password">
+									<span class="label-text">Password</span>
+								</label>
+								<input type="password" id="login-password" class="input input-bordered" required />
+							</div>
+							<div class="form-control mt-6">
+								<button type="submit" class="btn btn-primary w-full">Login</button>
+							</div>
+						</form>
+						<p class="mt-4 text-center">Don't have an account? <a href="#" class="text-rose"
+								id="show-signup">Register here</a></p>
+					</div>
 
-				<!-- Register Form (Initially hidden) -->
-				<div id="register-form" class="hidden space-y-4">
-					<h2 class="text-xl font-semibold text-center">Create your account</h2>
-					<form class="space-y-4" action="#" method="POST">
-						<div class="form-control">
-							<label class="label">
-								<span class="label-text">Username</span>
-							</label>
-							<input type="text" placeholder="Enter your username" class="input input-bordered w-full"
-								required />
-						</div>
-						<div class="form-control">
-							<label class="label">
-								<span class="label-text">Email</span>
-							</label>
-							<input type="email" placeholder="Enter your email" class="input input-bordered w-full"
-								required />
-						</div>
-						<div class="form-control">
-							<label class="label">
-								<span class="label-text">Password</span>
-							</label>
-							<input type="password" placeholder="Enter your password" class="input input-bordered w-full"
-								required />
-						</div>
-						<button type="submit" class="btn w-full">Register</button>
-					</form>
-				</div>
-
-				<!-- Close Modal Button -->
-				<div class="modal-action">
-					<label for="auth-modal" class="btn glass">Close</label>
+					<!-- Signup Form (hidden initially) -->
+					<div id="signup-form" class="hidden">
+						<h3 class="font-bold text-lg">Sign Up</h3>
+						<form>
+							<div class="form-control">
+								<label class="label" for="signup-name">
+									<span class="label-text">Name</span>
+								</label>
+								<input type="text" id="signup-name" class="input input-bordered" required />
+							</div>
+							<div class="form-control">
+								<label class="label" for="signup-email">
+									<span class="label-text">Email</span>
+								</label>
+								<input type="email" id="signup-email" class="input input-bordered" required />
+							</div>
+							<div class="form-control">
+								<label class="label" for="signup-password">
+									<span class="label-text">Password</span>
+								</label>
+								<input type="password" id="signup-password" class="input input-bordered" required />
+							</div>
+							<div class="form-control mt-6">
+								<button type="submit" class="btn btn-primary w-full">Sign Up</button>
+							</div>
+						</form>
+						<p class="mt-4 text-center">Already have an account? <a href="#" class="text-rose"
+								id="show-login">Login here</a></p>
+					</div>
 				</div>
 			</div>
-		</div>
-		<script>
-			const loginTab = document.getElementById('login-tab');
-			const registerTab = document.getElementById('register-tab');
-			const loginForm = document.getElementById('login-form');
-			const registerForm = document.getElementById('register-form');
 
-			loginTab.addEventListener('click', () => {
-				loginForm.classList.remove('hidden');
-				registerForm.classList.add('hidden');
-				loginTab.classList.add('tab-active');
-				registerTab.classList.remove('tab-active');
-			});
+			<!-- Modal toggle script -->
+			<script>
+				const loginForm = document.getElementById('login-form');
+				const signupForm = document.getElementById('signup-form');
+				const showSignupLink = document.getElementById('show-signup');
+				const showLoginLink = document.getElementById('show-login');
 
-			registerTab.addEventListener('click', () => {
-				loginForm.classList.add('hidden');
-				registerForm.classList.remove('hidden');
-				loginTab.classList.remove('tab-active');
-				registerTab.classList.add('tab-active');
-			});
-		</script>
-	</div>
-</div>
+				// Toggle from login to signup form
+				showSignupLink.addEventListener('click', function (e) {
+					e.preventDefault();
+					loginForm.classList.add('hidden');
+					signupForm.classList.remove('hidden');
+				});
+
+				// Toggle from signup to login form
+				showLoginLink.addEventListener('click', function (e) {
+					e.preventDefault();
+					signupForm.classList.add('hidden');
+					loginForm.classList.remove('hidden');
+				});
+			</script>
