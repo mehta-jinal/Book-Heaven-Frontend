@@ -26,5 +26,9 @@ export const routes: Routes = [
         path: 'library/book/:id',
         component: SinglebookComponent
     },
+    {
+        path: 'register',
+        component: SinglebookComponent
+    },
     
 ];
