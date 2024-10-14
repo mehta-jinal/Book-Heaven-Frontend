@@ -1,20 +1,37 @@
-<!-- Library Grid Section -->
-<section class="library-grid">
-  <div class="container" *ngFor="let book of books">
-    <div class="card">
-      <div class="imgBx">
-        <!-- Dynamically load book image -->
-        <img [src]="book.image">
-      </div>
+<div class="library-container">
+  <!-- Sidebar Section -->
+  <div class="sidebar">
+    <h3>Filter by Language</h3>
+    <div *ngFor="let language of languages">
+      <input 
+        type="checkbox" 
+        id="language-{{language}}" 
+        (change)="onLanguageChange(language, $event)">
+      <label for="language-{{language}}">{{ language }}</label>
+    </div>
 
-      <div class="contentBx">
-        <div class="size">
-          <!-- Display book name -->
-          <h2>{{ book.name }}</h2>
-        </div>
-        <!-- Dynamic link to view the book details -->
-        <a [href]="'library/book/' + book._id">View</a>
-      </div>
+    <h3>Filter by Category</h3>
+    <div *ngFor="let category of categories">
+      <input 
+        type="checkbox" 
+        id="category-{{category}}" 
+        (change)="onCategoryChange(category, $event)">
+      <label for="category-{{category}}">{{ category }}</label>
     </div>
   </div>
-</section>
+
+  <!-- Book Grid Section -->
+  <section class="library-grid">
+    <div class="container" *ngFor="let book of filteredBooks">
+      <div class="card">
+        <div class="imgBx">
+          <img [src]="book.image" alt="{{book.name}}">
+        </div>
+        <div class="contentBx">
+          <h2>{{ book.name }}</h2>
+          <a [href]="'library/book/' + book._id">View</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
