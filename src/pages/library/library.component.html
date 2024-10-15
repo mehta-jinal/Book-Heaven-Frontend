@@ -1,26 +1,20 @@
 <div class="library-container">
-  <!-- Sidebar Section -->
+  <!-- Sidebar for Filters -->
   <div class="sidebar">
     <h3>Filter by Language</h3>
     <div *ngFor="let language of languages">
-      <input 
-        type="checkbox" 
-        id="language-{{language}}" 
-        (change)="onLanguageChange(language, $event)">
-      <label for="language-{{language}}">{{ language }}</label>
+      <input type="checkbox" (change)="onLanguageChange(language, $event)">
+      <label>{{ language }}</label>
     </div>
 
     <h3>Filter by Category</h3>
     <div *ngFor="let category of categories">
-      <input 
-        type="checkbox" 
-        id="category-{{category}}" 
-        (change)="onCategoryChange(category, $event)">
-      <label for="category-{{category}}">{{ category }}</label>
+      <input type="checkbox" (change)="onCategoryChange(category, $event)">
+      <label>{{ category }}</label>
     </div>
   </div>
 
-  <!-- Book Grid Section -->
+  <!-- Display Books -->
   <section class="library-grid">
     <div class="container" *ngFor="let book of filteredBooks">
       <div class="card">
@@ -29,7 +23,7 @@
         </div>
         <div class="contentBx">
           <h2>{{ book.name }}</h2>
-          <a [href]="'library/book/' + book._id">View</a>
+          <a [href]="'/library/book/' + book._id">View</a>
         </div>
       </div>
     </div>

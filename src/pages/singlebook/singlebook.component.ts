@@ -17,6 +17,7 @@ export class SinglebookComponent implements OnInit {
 
   public book: any;  // Store a single book
   private bookId: string | null = null;
+  showRegister = false;
   register: any;
 
   constructor(private http: HttpClient, private route: ActivatedRoute, private router1: Router) { }
@@ -56,6 +57,10 @@ export class SinglebookComponent implements OnInit {
       window.location.href = '/register';
       // SinglebookComponent.arguments.router1.navigate(['/register']);
     }
+  }
+
+  toggleRegister() {
+    this.showRegister = !this.showRegister;    
   }
 }
 function onDownloadClick() {

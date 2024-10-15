@@ -1,63 +1,76 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { CommonModule } from '@angular/common'; // Import CommonModule
 
 @Component({
   selector: 'app-library',
   standalone: true,
-  imports: [HttpClientModule, CommonModule],
+  imports: [HttpClientModule, CommonModule],  // Ensure CommonModule is imported here
   templateUrl: './library.component.html',
   styleUrls: ['./library.component.css']
 })
 export class LibraryComponent implements OnInit {
-  public books: any[] = [];           // Stores all books from the API
-  public filteredBooks: any[] = [];    // Stores the filtered books
-  public languages: string[] = [];     // Stores available languages
-  public categories: string[] = [];    // Stores available categories
-  public selectedLanguages: string[] = [];   // Stores selected languages
-  public selectedCategories: string[] = [];  // Stores selected categories
+  public books: any[] = [];
+  public filteredBooks: any[] = [];
+  public languages: any[] = [];
+  public categories: any[] = [];
+  public selectedLanguages: string[] = [];
+  public selectedCategories: string[] = [];
 
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    // Fetch books from API
-    this.http.get('http://localhost:1003/books')
-      .subscribe((resp: any) => {
-        this.books = resp;
-        this.filteredBooks = this.books;  // Initially show all books
-        this.initializeFilters();         // Extract unique languages and categories
-      }, (error) => {
-        console.error('Error fetching books:', error);
-      });
+    this.fetchBooks();
+    this.fetchLanguages();
+    this.fetchCategories();
   }
 
-  // Initialize filters (languages and categories)
-  initializeFilters() {
-    this.languages = [...new Set(this.books.map(book => book.language))];
-    this.categories = [...new Set(this.books.map(book => book.category))];
+  fetchBooks() {
+    this.http.get('http://localhost:1003/books').subscribe((resp: any) => {
+      console.log('Books:', resp);
+      this.books = resp;
+      this.filteredBooks = this.books;
+    }, error => {
+      console.error('Error fetching books:', error);
+    });
   }
 
-  // Handle language checkbox change
+  fetchLanguages() {
+    this.http.get('http://localhost:1003/languages').subscribe((resp: any) => {
+      console.log('Languages:', resp);
+      this.languages = resp.map((lang: any) => lang.name);
+    }, error => {
+      console.error('Error fetching languages:', error);
+    });
+  }
+
+  fetchCategories() {
+    this.http.get('http://localhost:1003/categories').subscribe((resp: any) => {
+      console.log('Categories:', resp);
+      this.categories = resp.map((cat: any) => cat.c_name);
+    }, error => {
+      console.error('Error fetching categories:', error);
+    });
+  }
+
   onLanguageChange(language: string, event: any) {
     if (event.target.checked) {
       this.selectedLanguages.push(language);
     } else {
-      this.selectedLanguages = this.selectedLanguages.filter(l => l !== language);
+      this.selectedLanguages = this.selectedLanguages.filter(lang => lang !== language);
     }
     this.applyFilters();
   }
 
-  // Handle category checkbox change
   onCategoryChange(category: string, event: any) {
     if (event.target.checked) {
       this.selectedCategories.push(category);
     } else {
-      this.selectedCategories = this.selectedCategories.filter(c => c !== category);
+      this.selectedCategories = this.selectedCategories.filter(cat => cat !== category);
     }
     this.applyFilters();
   }
 
-  // Apply filters to the book list
   applyFilters() {
     this.filteredBooks = this.books.filter(book => {
       const matchesLanguage = this.selectedLanguages.length === 0 || this.selectedLanguages.includes(book.language);
