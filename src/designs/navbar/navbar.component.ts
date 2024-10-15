@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: 'navbar.component.css', 
 })
 export class NavbarComponent {
-  isDropdownOpen = false;
+  isDropdownOpen: boolean = false;
   isDarkTheme = false;  // Track the current theme
 
   toggleDropdown() {
