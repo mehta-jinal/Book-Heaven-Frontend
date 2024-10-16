@@ -81,7 +81,15 @@
 .btn1:hover {
 	background-color: #A17062;
 }
-
+.btn2 {
+	display: grid;
+	padding: 15px 20px;
+	background-color: #470829; /* Button color */
+	color: white;
+	text-decoration: none;
+	border-radius: 5px;
+	transition: background-color 0.3s ease;
+}
 .btn:hover {
 	background-color: #A17062;
 }

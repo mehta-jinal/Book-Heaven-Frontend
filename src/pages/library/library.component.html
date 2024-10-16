@@ -22,7 +22,9 @@
           <img [src]="book.image" alt="{{book.name}}">
         </div>
         <div class="contentBx">
+        <div class="size">
           <h2>{{ book.name }}</h2>
+        </div>
           <a [href]="'/library/book/' + book._id">View</a>
         </div>
       </div>
