@@ -1,19 +1,294 @@
-/* General Reset */
 * {
   margin: 0;
   padding: 0;
-  box-sizing: content-box;
+  box-sizing: border-box;
 }
 
-/* Body Styles */
 body {
   font-family: 'Arial', sans-serif;
-  background-color: #f4f4f4; /* Light background */
-  color: #333; /* Default text color */
-  padding: 20px; /* General padding */
+  background-color: #f4f4f4;
+  padding: 20px;
 }
 
-/* Main Library Container */
+.library-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive grid with 3 cards */
+  gap: 30px; /* Spacing between cards */
+  padding: 30px;
+
+}
+
+.library-item {
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Light shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+}
+
+.library-item:hover {
+  transform: translateY(-10px); /* Lift on hover */
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15); /* Shadow on hover */
+}
+
+.library-item img {
+  width: 150%; /* Full width images */
+  height: 350px; /* Fixed height for consistency */
+  object-fit: cover; /* Crop images to fit without distortion */
+  border-bottom: 1px solid #ddd; /* Separation between image and details */
+}
+
+.item-details {
+  padding: 15px;
+}
+
+.item-details h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.item-details p {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 15px;
+}
+
+.view-more {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #470829; /* Button color */
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.view-more:hover {
+  background-color: #A17062;
+   /* Darker on hover */
+}
+
+/* Responsive Design */
+@media (min-width: 1024px) {
+  .library-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 cards per row on large screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .library-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 cards per row on tablets */
+  }
+}
+
+@media (max-width: 480px) {
+  .library-grid {
+    grid-template-columns: 1fr; /* 1 card per row on mobile devices */
+  }
+}
+
+
+
+/* * {
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #131313;
+}
+
+.container {
+    position: relative;
+} */
+
+.container .card {
+    position: relative;
+    width: 320px;
+    height: 450px;
+    background: #470829;
+    border-radius: 20px;
+    overflow: hidden;
+    z-index: 10;
+    border-bottom-color: #A17062;
+    border-left-color: #A17062;
+    border-width: 5px;
+}
+
+.container .card:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #A17062, #753a88);
+    clip-path: circle(150px at 80% 20%);
+    transition: 0.5s ease-in-out;
+}
+
+.container .card:hover:before {
+    clip-path: circle(300px at 80% -20%);
+}
+
+.container .card:after {
+    /* content: "Books"; */
+    position: absolute;
+    top: 30%;
+    left: -20%;
+    font-size: 12em;
+    font-weight: 800;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.04);
+
+}
+
+.container .card .imgBx {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    transition: .5s;
+}
+
+.container .card:hover .imgBx {
+    top: 0%;
+    transform: translateY(-25%);
+    /* bug  */
+}
+
+.container .card .imgBx img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(20deg);
+    width: 220px;
+}
+
+.container .card .contentBx {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    text-align: center;
+    transition: 1s;
+    z-index: 90;
+}
+
+.container .card:hover .contentBx {
+    height: 210px;
+}
+
+.container .card .contentBx h2 {
+    position: relative;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #fff;
+}
+
+.container .card .contentBx .size,
+.container .card .contentBx .color {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 20px;
+    transition: .5s;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.container .card:hover .contentBx .size {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: .5s;
+}
+
+.container .card:hover .contentBx .color {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: .6s;
+   
+}
+
+.container .card .contentBx .size h2,
+.container .card .contentBx .color h2 {
+    color: white;
+    font-weight: 300;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 99px;
+    margin-right: 10px;
+}
+
+.container .card .contentBx .size span {
+    width: 26px;
+    height: 26px;
+    text-align: center;
+    line-height: 26px;
+    font-size: 14px;
+    display: inline-block;
+    color: #111;
+    background: #fff;
+    margin: 0 5px;
+    transition: .5s;
+    color: #111;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.container .card .contentBx .size span:hover {  /* other bug */
+    background: #B90000;
+}
+
+.container .card .contentBx .color span {
+    width: 20px;
+    height: 20px;
+    background: #ff0;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.container .card .contentBx .color span:nth-child(2) {
+     background: #1BBFE9;
+}
+
+.container .card .contentBx .color span:nth-child(3) {
+     background: #1B2FE9;
+}
+
+.container .card .contentBx .color span:nth-child(4) {
+     background: #080481;
+}
+
+.container .card .contentBx a {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #A17062;
+    border-radius: 4px;
+    margin-top: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    color: #470829;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: .5s;
+}
+
+.container .card:hover .contentBx a {
+    opacity: 1;
+    transform: translateY(0px);
+    transition-delay: .7s;
+} 
 .library-container {
   display: flex;
   gap: 30px; /* Space between sidebar and grid */
@@ -21,7 +296,7 @@ body {
 
 /* Sidebar Styles */
 .sidebar {
-  width: 15%;
+  width: 20%;
   background-color: #d2ada3; /* Light background for sidebar */
   padding: 30px; /* Padding inside sidebar */
   border-radius: 8px; /* Rounded corners */
@@ -34,141 +309,4 @@ body {
   margin-bottom: 20px; /* Increased bottom margin */
   margin-top: 20px;
   color: #470829; /* Dark color for visibility */
-}
-  
-/* Library Grid Styles */
-.library-grid {
-  display: grid; /* Use grid layout for book cards */
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive grid */
-  gap: 50px; /* Space between cards */
-  padding: 20px; /* Padding around grid */
-  width: 75%; /* Width of grid section */
-}
-
-/* Library Item Styles */
-.library-item {
-  position: relative; /* Allow for absolute positioning of the image */
-  background-color: #fff; /* White background for cards */
-  border-radius: 8px; /* Rounded corners */
-  overflow: hidden; /* Hide overflow */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Light shadow */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hover effect */
-}
-
-/* Hover Effects for Library Item */
-.library-item:hover {
-  transform: scale(1.03); /* Slightly scale up on hover */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
-}
-
-/* Image Styles */
-.library-item img {
-  width: 100%; /* Full width images */
-  height: auto; /* Maintain aspect ratio */
-  max-height: 250px; /* Adjusted maximum height for consistency */
-  object-fit: cover; /* Crop images to fit while maintaining aspect ratio */
-}
-
-/* Item Details */
-.item-details {
-  padding: 15px; /* Padding for item details */
-}
-
-.item-details h3 {
-  font-size: 18px; /* Title size */
-  margin-bottom: 8px; /* Space below title */
-  color: #333; /* Dark color for text */
-}
-
-.item-details p {
-  font-size: 14px; /* Description size */
-  color: #777; /* Lighter color for description */
-  margin-bottom: 12px; /* Space below description */
-}
-
-/* Button Styles */
-.view-more {
-  display: inline-block; /* Block for padding */
-  padding: 10px 15px; /* Button padding */
-  background-color: #470829; /* Button color */
-  color: white; /* Text color */
-  text-decoration: none; /* Remove underline */
-  border-radius: 5px; /* Rounded corners */
-  transition: background-color 0.3s ease; /* Transition effect */
-  margin-top: 10px; /* Space above button */
-}
-
-.view-more:hover {
-  background-color: #A17062; /* Darker on hover */
-}
-
-/* Footer Styles */
-footer {
-  text-align: center; /* Center text */
-  margin-top: 30px; /* Space above footer */
-  padding: 10px; /* Padding inside footer */
-  background-color: #470829; /* Dark footer background */
-  color: #fff; /* White text for footer */
-}
-
-/* Additional Card Styles */
-.card {
-  position: relative;
-  width: 90%; /* Make cards responsive */
-  height: 500px;  /* Fixed height */
-  background: #470829; /* Card background color */
-  border-radius: 20px; /* Rounded corners */
-  overflow: hidden; /* Hide overflow */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
-  transition: transform 0.3s ease; /* Smooth transition */
-}
-
-/* Card Hover Effects */
-.card:hover {
-  transform: scale(1.05); /* Scale effect on hover */
-}
-
-/* Image Box */
-.imgBx {
-  width: 100%;
-  height: 70%; /* Height for image box */
-  overflow: hidden; /* Hide overflow */
-  object-fit: cover;
-}
-
-.card img {
-  width: 100%; /* Full width */
-  height: 100%;  /* Full height to fill container */
-  object-fit: cover;
-   /* Maintain aspect ratio */
-}
-
-/* Content Box */
-.contentBx {
-  padding: 15px; /* Padding for content */
-  text-align: center; /* Center text */
-}
-
-/* Title Styles */
-.contentBx h2 {
-  font-size: 18px; /* Title size */
-  color: #fff; /* White text */
-  margin: 10px 0; /* Margin around title */
-}
-
-/* Button Styles */
-.contentBx a {
-  display: inline-block;
-  padding: 10px 15px; /* Button padding */
-  background: #A17062; /* Button background */
-  border-radius: 4px; /* Rounded corners */
-  color: #470829; /* Text color */
-  text-decoration: none; /* Remove underline */
-  margin-top: 10px; /* Space above button */
-}
-
-/* Button Hover Effect */
-.contentBx a:hover {
-  background: #fff; /* White on hover */
-  color: #470829; /* Text color on hover */
 }
