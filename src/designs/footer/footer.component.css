@@ -1,14 +1,24 @@
-.logo{
+.logo {
     width: 15%;
 }
-.text-footer{
-        margin-left: 150px;
+
+.text-footer {
+    margin-left: 150px;
 }
-.footer{
+
+.footer {
     background-color: #470829;
-    /* position: fixed;
+    color: #ffffff; /* Optional to make text visible */
+    position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
-    text-align: center; */
+    text-align: center;
+    padding: 10px;
+    z-index: 1000;
+}
+
+body {
+    margin: 0;
+    padding-bottom: 60px; /* Add padding equal to footer height to avoid overlap */
 }
