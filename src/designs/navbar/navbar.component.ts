@@ -12,23 +12,9 @@ import { CommonModule } from '@angular/common';
 })
 export class NavbarComponent {
   isDropdownOpen: boolean = false;
-  isDarkTheme = false;  // Track the current theme
-
+  
   toggleDropdown() {
     this.isDropdownOpen = !this.isDropdownOpen;
-  }
-
-  // Toggle the theme between dark and light
-  toggleTheme() {
-    this.isDarkTheme = !this.isDarkTheme;
-    
-    const rootElement = document.documentElement;
-
-    if (this.isDarkTheme) {
-      rootElement.classList.add('dark');
-    } else {
-      rootElement.classList.remove('dark');
-    }
   }
 
   logout() {
