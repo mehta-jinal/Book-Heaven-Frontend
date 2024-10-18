@@ -8,19 +8,8 @@
             <li><a routerLink="library">Library</a></li>
             <li><a routerLink="about">About</a></li>
             <li><a routerLink="contact">Contact Us</a></li>
-            <li class="nav-item dropdown">
-                <a class="nav-link" id="profileDropdown" (click)="toggleDropdown()">
-                    <div class="navbar-profile">
-                        <img class="img-xs rounded-circle" src="images/profile.jpg" alt="Profile Image">
-                        <!-- <p class="mb-0 d-none d-sm-block navbar-profile-name"></p> -->
-                        <i class="mdi mdi-menu-down d-none d-sm-block"></i>
-                    </div>
-                </a>
-                <div *ngIf="isDropdownOpen" class="dropdown-menu">
-                    <a class="dropdown-item" routerLink="/profile">Profile</a>
-                    <a class="dropdown-item" (click)="logout()">Log out</a>
-                </div>
-            </li>
+            <li><label for="auth-modal">Login</label></li>
         </ul>
     </div>
 </div>
+<app-register></app-register>
