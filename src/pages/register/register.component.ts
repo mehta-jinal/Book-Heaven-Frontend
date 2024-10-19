@@ -27,7 +27,6 @@ export class RegisterComponent implements OnInit{
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
-    
    }
 
   ngOnInit(): void { }
@@ -59,7 +58,6 @@ export class RegisterComponent implements OnInit{
         );
     }
   }
-
   onLoginSubmit() {
     if (this.loginForm.valid) {
       const loginData = this.loginForm.value;
@@ -70,7 +68,8 @@ export class RegisterComponent implements OnInit{
             response => {
               console.log('Success:', response);
               alert('Submitted successfully!');
-              window.open('https://icrrd.com/public/media', '_blank'); // Update the URL to the correct one.
+              // window.open('https://icrrd.com/public/media', '_blank'); // Update the URL to the correct one.
+              this.router1.navigate(['/singlebook']);
           },
           error => {
             console.error('Login error', error);

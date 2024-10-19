@@ -6,59 +6,43 @@
 
         @if(!showRegister){
         <!-- Login Form (default view) -->
-        <div id="login-form">
-            <h3 class="font-bold text-lg">Sign In</h3>
+        <div id="login-form" style="font-family: cursive">
+            <h3 class="font-bold text-2xl text-center text-rose">Sign In</h3>
             <form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
                 <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" formControlName="email" class="form-control" id="email" required>
+                    <label for="email" class="mt-4 text-lg font-semibold text-rose">Email</label>
+                    <input type="email" placeholder="Enter Email" formControlName="email" class="form-control mt-2" id="email" required>
                 </div>
                 <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" formControlName="password" class="form-control" id="password" required>
+                    <label for="password" class="mt-4 text-lg font-semibold text-rose">Password</label>
+                    <input type="password" placeholder="Enter Password" formControlName="password" class="form-control mt-2" id="password" required>
                 </div>
-                <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Login</button>
+                <button type="submit" class="btn glass btn-rose w-full mt-4" [disabled]="loginForm.invalid">Sign In</button>
             </form>
-            <p class="mt-4 text-center">Don't have an account? <button (click)="toggleRegister()">Register
-                    here</button></p>
+            <p class="mt-4 text-center">Don't have an account? <a class="cursor-pointer" (click)="toggleRegister()">Click here</a></p>
         </div>
         }
 
         <!-- Signup Form (hidden initially) -->
         @if (showRegister) {
-        <div id="signup-form">
-            <h3 class="font-bold text-lg">Sign Up</h3>
+        <div id="signup-form" style="font-family: cursive">
+            <h3 class="font-bold text-2xl text-center text-rose">Sign Up</h3>
             <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
                 <div class="form-group">
-                    <label class="label" for="signup-name">
-                        <span class="label-text">Name</span>
-                    </label>
-                    <input type="text" id="signup-name" class="input input-bordered" formControlName="name" required />
-
+                    <label for="signup-name" class="mt-4 text-lg font-semibold text-rose">Name</label>
+                    <input type="text" placeholder="Enter Your Name" formControlName="name" class="form-control mt-2" id="signup-name" required>
                 </div>
                 <div class="form-group">
-                    <label class="label" for="signup-email">
-                        <span class="label-text">Email</span>
-                    </label>
-                    <input type="email" id="signup-email" class="input input-bordered" formControlName="email" />
-                    <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
-                        Please enter a valid email address
-                    </div>
+                    <label for="signup-email" class="mt-4 text-lg font-semibold text-rose">Email</label>
+                    <input type="email" placeholder="Enter Email" formControlName="email" class="form-control mt-2" id="signup-email" required>
                 </div>
                 <div class="form-group">
-                    <label class="label" for="signup-password">
-                        <span class="label-text">Password</span>
-                    </label>
-                    <input type="password" id="signup-password" class="input input-bordered"
-                        formControlName="password" />
+                    <label for="signup-password" class="mt-4 text-lg font-semibold text-rose">Password</label>
+                    <input type="password" placeholder="Enter Password" formControlName="password" class="form-control mt-2" id="signup-password" required>
                 </div>
-                <div class="form-group mt-6">
-                    <button type="submit" class="btn btn-primary w-full" [disabled]="registerForm.invalid">Sign
-                        Up</button>
-                </div>
+                <button type="submit" class="btn glass btn-rose w-full mt-4" [disabled]="registerForm.invalid">Sign Up</button>
             </form>
-            <p class="mt-4 text-center">Already have an account? <button (click)="toggleRegister()">Login here</button>
-            </p>
+            <p class="mt-4 text-center">Already have an account? <a class="cursor-pointer" (click)="toggleRegister()">Click here</a></p>
         </div>
         }
     </div>
