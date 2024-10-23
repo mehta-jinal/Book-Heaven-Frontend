@@ -69,8 +69,9 @@ export class RegisterComponent implements OnInit{
               console.log('Success:', response);
               alert('Submitted successfully!');
               // window.open('https://icrrd.com/public/media', '_blank'); // Update the URL to the correct one.
-              this.router1.navigate(['/singlebook']);
-          },
+              // this.router1.navigate(['/']);
+              window.location.href = '/';
+            },
           error => {
             console.error('Login error', error);
             alert('Invalid credentials');
@@ -78,6 +79,32 @@ export class RegisterComponent implements OnInit{
         );
     }
   }
+  // onLoginSubmit() {
+  //   if (this.loginForm.valid) {
+  //     const loginData = this.loginForm.value;
+  
+  //     // Send POST request to login API
+  //     this.http.post<any>('http://localhost:1003/users/login', loginData)
+  //       .subscribe(
+  //         response => {
+  //           console.log('Login Success:', response);
+  //           alert('Login successful!');
+  
+  //           // Log before navigating
+  //           console.log('Attempting navigation...');
+            
+  //           // Attempt to navigate
+  //           this.router1.navigate(['/library'])
+  //             .then(success => console.log('Navigation successful:', success))
+  //             .catch(err => console.error('Navigation error:', err));
+  //         },
+  //         error => {
+  //           console.error('Login error:', error);
+  //           alert('Invalid credentials');
+  //         }
+  //       );
+  //   }
+  // }
 
   // Method to handle download button click
   onDownloadClick() {
