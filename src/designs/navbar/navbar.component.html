@@ -8,8 +8,15 @@
             <li><a routerLink="library">Library</a></li>
             <li><a routerLink="about">About</a></li>
             <li><a routerLink="contact">Contact Us</a></li>
-            <li><label for="auth-modal">Login</label></li>
+            <!-- Conditionally display login or logout based on user's status -->
+            <li *ngIf="!isLoggedIn">
+                <label for="auth-modal">Login</label>
+            </li>
+            <li *ngIf="isLoggedIn">
+                <a (click)="toggleLogin()">Logout</a>
+            </li>
         </ul>
     </div>
 </div>
 <app-register></app-register>
+

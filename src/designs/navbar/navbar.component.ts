@@ -13,6 +13,7 @@ import { RegisterComponent } from "../../pages/register/register.component";
 })
 export class NavbarComponent {
   isDropdownOpen: boolean = false;
+  isLoggedIn = false; // Set this based on your authentication logic
   
   toggleDropdown() {
     this.isDropdownOpen = !this.isDropdownOpen;
@@ -21,4 +22,9 @@ export class NavbarComponent {
   logout() {
     console.log('Logging out...');
   }
+
+    // Simulate login/logout
+    toggleLogin() {
+      this.isLoggedIn = !this.isLoggedIn;
+    }
 }
