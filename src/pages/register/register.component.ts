@@ -39,8 +39,10 @@ export class RegisterComponent implements OnInit{
         .subscribe(
           response => {
             console.log('Success:', response);
-            alert('Submitted successfully!');
-            this.router1.navigate(['/']);
+            alert('Signed Up successfully!');
+            // this.router1.navigate(['/']);
+            // window.location.href = '#login-form';
+            document.getElementById('auth-modal')?.click();
           },
           error => {
             console.error('Error status:', error.status);
@@ -67,7 +69,7 @@ export class RegisterComponent implements OnInit{
         .subscribe(
             response => {
               console.log('Success:', response);
-              alert('Submitted successfully!');
+              alert('Signed In Successfully!');
               // window.open('https://icrrd.com/public/media', '_blank'); // Update the URL to the correct one.
               // this.router1.navigate(['/']);
               window.location.href = '/';
@@ -123,7 +125,8 @@ export class RegisterComponent implements OnInit{
   }
 
   toggleRegister() {
-    this.showRegister = !this.showRegister;    
+    this.showRegister = !this.showRegister;  
+    
   }
 }
 function onDownloadClick() {
