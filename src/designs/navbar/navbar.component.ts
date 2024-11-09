@@ -7,24 +7,18 @@ import { RegisterComponent } from "../../pages/register/register.component";
   selector: 'app-navbar',
   standalone: true,
   imports: [RouterLink, CommonModule, RegisterComponent],
-  templateUrl: './navbar.component.html', 
-  
-  styleUrl: 'navbar.component.css', 
+  templateUrl: './navbar.component.html',
+
+  styleUrl: 'navbar.component.css',
 })
 export class NavbarComponent {
-  isDropdownOpen: boolean = false;
   isLoggedIn = false; // Set this based on your authentication logic
-  
-  toggleDropdown() {
-    this.isDropdownOpen = !this.isDropdownOpen;
-  }
+  router: any;
 
-  logout() {
-    console.log('Logging out...');
+  // Simulate login/logout
+  toggleLogin() {
+    this.isLoggedIn = !this.isLoggedIn;
+    alert('You have been successfully logged out!');
+    this.router.navigate(['/']);
   }
-
-    // Simulate login/logout
-    toggleLogin() {
-      this.isLoggedIn = !this.isLoggedIn;
-    }
 }
