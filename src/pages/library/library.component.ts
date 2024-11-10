@@ -17,7 +17,7 @@ export class LibraryComponent implements OnInit {
   public selectedLanguages: string[] = [];
   public selectedCategories: string[] = [];
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
     this.fetchBooks();
@@ -79,26 +79,26 @@ export class LibraryComponent implements OnInit {
   }
 
   applyFilters() {
-
     console.log('Selected Languages:', this.selectedLanguages);
     console.log('Selected Categories:', this.selectedCategories);
-
+  
     this.filteredBooks = this.books.filter((book) => {
       const matchesLanguage =
         this.selectedLanguages.length === 0 ||
-        this.selectedLanguages.includes(book.language);
+        this.selectedLanguages.includes(book.l_id);
       const matchesCategory =
         this.selectedCategories.length === 0 ||
-        this.selectedCategories.includes(book.category);
-
+        this.selectedCategories.includes(book.c_id);
+  
       // Log each book and whether it matches
-      console.log(`Book: ${book.name} - Language: ${book.language}, Category: ${book.category}`);
+      console.log(`Book: ${book.name} - Language: ${book.l_id}, Category: ${book.c_id}`);
       console.log(`Matches Language: ${matchesLanguage}, Matches Category: ${matchesCategory}`);
-
+  
       return matchesLanguage && matchesCategory;
-
-      // Log the result of filtering
-      console.log('Filtered Books:', this.filteredBooks);
     });
+  
+    // Log the result of filtering
+    console.log('Filtered Books:', this.filteredBooks);
   }
+  
 }
