@@ -8,7 +8,7 @@ import {RegisterComponent} from '../register/register.component'
 @Component({
   selector: 'app-singlebook',
   standalone: true,
-  imports: [HttpClientModule, CommonModule, RouterLink, FormsModule, ReactiveFormsModule, RegisterComponent],
+  imports: [HttpClientModule, CommonModule, FormsModule, ReactiveFormsModule, RegisterComponent],
   templateUrl: './singlebook.component.html',
   styleUrls: ['./singlebook.component.css']
 })
