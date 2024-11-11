@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
   templateUrl: './register.component.html',
-  styleUrl: './register.component.css'
+  styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
   showRegister = false;
@@ -37,7 +37,7 @@ export class RegisterComponent implements OnInit {
       this.http.post<any>('http://localhost:1003/users/register', formData).subscribe(
         response => {
           alert('Signed Up successfully!');
-          document.getElementById('auth-modal')?.click(); // Close modal on success
+          this.toggleRegister(); // Switch to the login form after successful signup
         },
         error => {
           console.error('Error:', error);
@@ -55,7 +55,8 @@ export class RegisterComponent implements OnInit {
         response => {
           alert('Signed In Successfully!');
           localStorage.setItem('jwtToken', response.token);
-          window.location.href = '/';
+          document.getElementById('auth-modal')?.click(); // Close modal
+          window.location.href = '/'; // Redirect to the original page
         },
         error => {
           console.error('Login error', error);

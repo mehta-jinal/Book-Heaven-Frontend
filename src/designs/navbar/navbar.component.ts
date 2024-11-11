@@ -28,6 +28,7 @@ export class NavbarComponent implements OnInit {
     if (this.isLoggedIn) {
       localStorage.removeItem('jwtToken'); // Logout
       this.isLoggedIn = false;
+      alert("Logged out!")
       this.router.navigate(['/']); // Navigate to home or login page
     } else {
       document.getElementById('auth-modal')?.click(); // Trigger login modal if not logged in
