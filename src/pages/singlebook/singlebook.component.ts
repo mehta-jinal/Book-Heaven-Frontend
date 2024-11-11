@@ -2,8 +2,8 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { FormBuilder,ReactiveFormsModule, FormGroup, FormsModule, Validators } from '@angular/forms';
-import {RegisterComponent} from '../register/register.component'
+import { FormBuilder, ReactiveFormsModule, FormGroup, FormsModule, Validators } from '@angular/forms';
+import { RegisterComponent } from '../register/register.component'
 
 @Component({
   selector: 'app-singlebook',
@@ -17,7 +17,7 @@ export class SinglebookComponent implements OnInit {
   public book: any;  // Store a single book
   private bookId: string | null = null;
 
-  constructor(private http: HttpClient, private route: ActivatedRoute, private router1: Router, private fb:FormBuilder) { }
+  constructor(private http: HttpClient, private route: ActivatedRoute, private router1: Router, private fb: FormBuilder) { }
 
   ngOnInit(): void {
     // Fetch book ID from route parameters
@@ -44,23 +44,14 @@ export class SinglebookComponent implements OnInit {
     const token = localStorage.getItem('jwtToken');
 
     if (token) {
-      // User is logged in, redirect to the download URL
-      window.location.href = 'https://openlibrary.org/';
+      // User is logged in, open the download URL in a new tab
+      window.open('https://openlibrary.org/', '_blank');
     } else {
       // User is not logged in, open login modal
       document.getElementById('auth-modal')?.click();
     }
   }
-
 }
-
-// handleDownload(): void {
-//   if (this.isLoggedIn) {
-//     window.location.href = 'https://openlibrary.org/';
-//   } else {
-//     this.showLoginModal();
-//   }
-// }
 
 
 
