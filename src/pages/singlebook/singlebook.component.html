@@ -14,9 +14,10 @@
 			<p class="ts1 fst-italic mt-2">-{{book.author}}</p>
 			<p class="ts1 mt-4">{{book.description}}</p>
 			<p class="mt-2">Published on: {{book.pub_date}}</p>
-
-			<!-- Button trigger modal -->
-			<div class="flex mt-8" data-theme="light">
-				<label for="auth-modal" class="btn glass btn-primary">Download</label>
-			</div>
-			<app-register></app-register>			
+  
+	<div class="flex mt-8" data-theme="light">
+	  <button (click)="onDownloadClick()" class="btn glass btn-primary">Download</button>
+	</div>
+	<app-register></app-register>  <!-- Ensure the register component is included for modal functionality -->
+  </div>
+  

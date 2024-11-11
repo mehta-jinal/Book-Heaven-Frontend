@@ -39,6 +39,19 @@ export class SinglebookComponent implements OnInit {
         console.error('Error fetching book:', error);
       });
   }
+
+  onDownloadClick() {
+    const token = localStorage.getItem('jwtToken');
+
+    if (token) {
+      // User is logged in, redirect to the download URL
+      window.location.href = 'https://openlibrary.org/';
+    } else {
+      // User is not logged in, open login modal
+      document.getElementById('auth-modal')?.click();
+    }
+  }
+
 }
 
 // handleDownload(): void {
