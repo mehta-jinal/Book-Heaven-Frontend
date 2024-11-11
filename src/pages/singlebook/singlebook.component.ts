@@ -35,6 +35,8 @@ export class SinglebookComponent implements OnInit {
     this.http.get(`http://localhost:1003/books/${bookId}`)
       .subscribe((resp: any) => {
         this.book = resp;  // Set single book object
+        // Example: Assume `resp` contains a field `downloadLink`
+        console.log('Fetched Book:', this.book);
       }, (error) => {
         console.error('Error fetching book:', error);
       });
@@ -44,8 +46,8 @@ export class SinglebookComponent implements OnInit {
     const token = localStorage.getItem('jwtToken');
 
     if (token) {
-      // User is logged in, open the download URL in a new tab
-      window.open('https://openlibrary.org/', '_blank');
+      // User is logged in and a download link exists for this book(upar ni line ma after token lakhvanu if necessary --> && this.book && this.book.downloadLink)
+      window.open(this.book.downloadLink, '_blank');
     } else {
       // User is not logged in, open login modal
       document.getElementById('auth-modal')?.click();

@@ -21,7 +21,12 @@
 .ts1 {
 	font-size: 25px;
 }
-
+.ts2 {
+	font-size: 16px;
+}
+.ts3 {
+	font-size: 18px;
+}
 .btn-outline-secondary {
 	border-radius: 5px;
 }
@@ -170,3 +175,10 @@ button:hover {
 #chk:checked~.signup label {
 	transform: scale(.6);
 }
+
+.scrollable-content {
+	max-height: 400px;
+	overflow-y: auto;
+	padding-right: 15px;
+  }
+  
