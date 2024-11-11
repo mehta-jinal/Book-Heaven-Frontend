@@ -41,5 +41,13 @@ export class SinglebookComponent implements OnInit {
   }
 }
 
+// handleDownload(): void {
+//   if (this.isLoggedIn) {
+//     window.location.href = 'https://openlibrary.org/';
+//   } else {
+//     this.showLoginModal();
+//   }
+// }
+
 
 

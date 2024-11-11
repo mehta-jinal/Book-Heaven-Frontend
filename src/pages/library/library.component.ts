@@ -12,8 +12,8 @@ import { CommonModule } from '@angular/common'; // Import CommonModule
 export class LibraryComponent implements OnInit {
   public books: any[] = [];
   public filteredBooks: any[] = [];
-  public languages: string[] = [];
-  public categories: string[] = [];
+  public languages: any[] = []; // Update to hold both id and name
+  public categories: any[] = []; // Update to hold both id and c_name
   public selectedLanguages: string[] = [];
   public selectedCategories: string[] = [];
 
@@ -40,7 +40,7 @@ export class LibraryComponent implements OnInit {
     this.http.get('http://localhost:1003/languages').subscribe(
       (resp: any) => {
         console.log('Languages:', resp);
-        this.languages = resp.map((lang: any) => lang.name);
+        this.languages = resp.map((lang: any) => ({ id: lang._id, name: lang.name }));
       },
       (error) => console.error('Error fetching languages:', error)
     );
@@ -50,30 +50,26 @@ export class LibraryComponent implements OnInit {
     this.http.get('http://localhost:1003/categories').subscribe(
       (resp: any) => {
         console.log('Categories:', resp);
-        this.categories = resp.map((cat: any) => cat.c_name);
+        this.categories = resp.map((cat: any) => ({ id: cat._id, name: cat.c_name }));
       },
       (error) => console.error('Error fetching categories:', error)
     );
   }
 
-  onLanguageChange(language: string, event: any) {
+  onLanguageChange(languageId: string, event: any) {
     if (event.target.checked) {
-      this.selectedLanguages.push(language);
+      this.selectedLanguages.push(languageId);
     } else {
-      this.selectedLanguages = this.selectedLanguages.filter(
-        (lang) => lang !== language
-      );
+      this.selectedLanguages = this.selectedLanguages.filter((id) => id !== languageId);
     }
     this.applyFilters();
   }
 
-  onCategoryChange(category: string, event: any) {
+  onCategoryChange(categoryId: string, event: any) {
     if (event.target.checked) {
-      this.selectedCategories.push(category);
+      this.selectedCategories.push(categoryId);
     } else {
-      this.selectedCategories = this.selectedCategories.filter(
-        (cat) => cat !== category
-      );
+      this.selectedCategories = this.selectedCategories.filter((id) => id !== categoryId);
     }
     this.applyFilters();
   }
@@ -90,15 +86,9 @@ export class LibraryComponent implements OnInit {
         this.selectedCategories.length === 0 ||
         this.selectedCategories.includes(book.c_id);
   
-      // Log each book and whether it matches
-      console.log(`Book: ${book.name} - Language: ${book.l_id}, Category: ${book.c_id}`);
-      console.log(`Matches Language: ${matchesLanguage}, Matches Category: ${matchesCategory}`);
-  
       return matchesLanguage && matchesCategory;
     });
   
-    // Log the result of filtering
     console.log('Filtered Books:', this.filteredBooks);
   }
-  
 }
