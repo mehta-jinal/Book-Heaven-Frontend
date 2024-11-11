@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { RegisterComponent } from "../../pages/register/register.component";
 
@@ -11,14 +11,26 @@ import { RegisterComponent } from "../../pages/register/register.component";
 
   styleUrl: 'navbar.component.css',
 })
-export class NavbarComponent {
-  isLoggedIn = false; // Set this based on your authentication logic
-  router: any;
+export class NavbarComponent implements OnInit {
+  isLoggedIn = false;
 
-  // Simulate login/logout
+  constructor(private router: Router) {}
+
+  ngOnInit(): void {
+    this.checkLoginStatus();
+  }
+
+  checkLoginStatus() {
+    this.isLoggedIn = !!localStorage.getItem('jwtToken');
+  }
+
   toggleLogin() {
-    this.isLoggedIn = !this.isLoggedIn;
-    alert('You have been successfully logged out!');
-    this.router.navigate(['/']);
+    if (this.isLoggedIn) {
+      localStorage.removeItem('jwtToken'); // Logout
+      this.isLoggedIn = false;
+      this.router.navigate(['/']); // Navigate to home or login page
+    } else {
+      document.getElementById('auth-modal')?.click(); // Trigger login modal if not logged in
+    }
   }
 }
